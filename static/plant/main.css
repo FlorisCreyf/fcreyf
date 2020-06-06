@@ -1,0 +1,157 @@
+body {
+	margin: 0;
+	font-family: sans-serif;
+	font-size: 13px;
+	color: #222;
+}
+
+/* navigataion */
+.center {
+	margin: auto;
+	max-width: 1000px;
+	padding: 0 10px;
+} #nav {
+	background-color: #333;
+	color: #fff;
+} .icons {
+	margin: 10px 10px 0 0;
+	display: inline-block;
+	vertical-align: top;
+} #nav ul {
+	margin: auto;
+	padding: 0;
+	display: inline-block;
+} #nav li {
+	display: inline-block;
+	vertical-align: middle;
+} .nav-link {
+	padding: 19px 20px;
+	display: block;
+	color: #fff;
+	line-height: 1em;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+} .nav-link:hover {
+} #nav img {
+	height: 30px;
+} #nav li:first-child {
+	margin-right: 20px;
+}
+
+#overview {
+	padding: 10px 0 0 0;
+	background: #fff;
+} #overview h1 {
+	margin: 0;
+	font-size: 100px;
+	color: #333
+} #overview p {
+	color: #333;
+	line-height: 1.5em;
+	max-width: 500px;
+}
+
+h2 {
+	margin: 0;
+	padding: 15px 0;
+	font-size: 18px;
+	color: #333;
+}
+
+#download-items {
+	margin: 0;
+	padding: 0;
+} #download-items li {
+	background: #3a78e8;
+	display: inline-block;
+	width: 32%;
+	margin-right: 2%;
+} #download-items li:last-child {
+	margin-right: 0;
+} #download-items a {
+	padding: 10px;
+	font-weight: bold;
+	color: #fff;
+	text-decoration: none;
+	display: block;
+} #clone {
+	width: 100%;
+	margin-top: 10px;
+	background-color: #a0cfff;
+} #clone div  {
+	padding: 10px;
+}
+
+#docs-items {
+	margin: 0;
+	padding: 0;
+} #docs-items li {
+	background: #4c5e80;
+	display: inline-block;
+	width: 32%;
+	margin-right: 2%;
+} #docs-items li:last-child {
+	margin-right: 0;
+} #docs-items a {
+	padding: 10px;
+	font-weight: bold;
+	color: #fff;
+	text-decoration: none;
+	display: block;
+} #docs {
+} #docs p {
+	max-width: 500px;
+	line-height: 1.5em;
+	margin: 0 0 10px 0;
+} #docs li {
+	line-height: 1.5em;
+} #docs img {
+	max-width: 100%;
+	margin: 10px 0;
+} .left {
+	vertical-align: top;
+	display: inline-block;
+	width: 49%;
+	margin-right: 2%;
+} .right {
+	vertical-align: top;
+	display: inline-block;
+	width: 49%;
+} span {
+	font-size: 12px;
+	font-family: mono;
+} .todo {
+	background-color: #fff7a5;
+	padding: 2px 6px;
+	font-weight: bold;
+}
+
+#screenshots {
+	padding-bottom: 40px;
+} #screenshots img {
+	width: 49%;
+	display: inline-block;
+} #images img:first-child {
+	margin-right: 2%;
+}
+
+@media screen and (max-width:700px) {
+	#overview h1 {
+		margin: 10px 0;
+		font-size: 40px;
+	} #nav {
+		padding-bottom: 1px;
+	} #nav li {
+		display: block;
+	} .icons {
+		margin: 20px 0 20px 20px;
+	} #nav ul {
+		display: inherit;
+	} .nav-link {
+		padding: 0 0 10px 20px;
+		margin: 0 0 10px 0;
+	} .right, .left {
+		width: 100%;
+	}
+}

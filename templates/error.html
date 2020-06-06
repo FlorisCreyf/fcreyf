@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ error.code }} {{ error.name }} | fcreyf</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		{% include 'header.html' %}
+		<div class="center">
+			<h1 id="error-code"> {{ error.code }} {{ error.name }} </h1>
+			<p id="error-message"> {{ error.description }} </p>
+		</div>
+	</body>
+</html>

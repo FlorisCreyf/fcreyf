@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>about | fcreyf</title>
+		<meta name="author" content="Floris Creyf">
+		<meta name="description" content="Learn more about Floris Creyf. View Floris Creyf's online profiles and summary.">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		{% include 'header.html' %}
+		<div class="center">
+			<div id="about">
+				<h1>About</h1>
+				<h2>Floris Creyf</h2>
+
+				<div>
+					<div id="about-text">
+						<div id="about-mail"><a id="reachme"></a><noscript>first_name + "." + last_name + "@" + domain</noscript></div>
+						<div id="about-links">
+						  <a href="https://github.com/FlorisCreyf"><img alt="Floris Creyf" src="{{ url_for('static', filename='images/github.png') }}"></a>
+						  <a href="https://www.linkedin.com/in/floriscreyf"><img alt="Floris Creyf" src="{{ url_for('static', filename='images/linkedin.png') }}"></a>
+						</div>
+
+						<p>The purpose of this website is to contain a collection of projects I have been working on. For my main side project I am working on a tree generator, which might involve the following:</p>
+						<ul>
+							<li>Qt5</li>
+							<li>OpenGL</li>
+							<li>Linear Algebra</li>
+							<li>Computational Geometry</li>
+							<li>Botany</li>
+						</ul>
+					</div>
+					<div><img alt="Floris Creyf" src="{{ url_for('static', filename='images/floriscreyf.jpg') }}"></div>
+				</div>
+
+				<script>
+					var a = 'qfqloqrisq.';a = a.replace(/q/g,'');
+					var b = 'scssresyf';b = b.replace(/s/g,'');
+					var c = 'fzczrzzeyf';c = c.replace(/z/g,'');
+					var d = 'fmfafiltfo';d = d.replace(/f/g,'');
+					var e = a+b+'@'+c+'.com';
+					document.getElementById('reachme').innerHTML = e;
+					document.getElementById('reachme').href = d+':'+e;
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

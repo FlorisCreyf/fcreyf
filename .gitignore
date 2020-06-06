@@ -1,0 +1,8 @@
+*.pyc
+*.tar.*
+*.zip
+*.dia
+*.png
+*.jpg
+*.ico
+index.yaml

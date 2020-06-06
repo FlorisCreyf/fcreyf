@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{ name }} | fcreyf</title>
+		<meta name="author" content="Floris Creyf">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<script async type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML.js"></script>
+		<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		{% include 'header.html' %}
+		<div class="center">
+			{% block content %}{% endblock %}
+		</div>
+	</body>
+</html>
