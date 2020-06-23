@@ -1,4 +1,4 @@
 from flask import Flask
 app = Flask(__name__)
-from app import main, plant
+from app import main
 app.run(debug=True)

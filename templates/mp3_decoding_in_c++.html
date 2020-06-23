@@ -24,7 +24,7 @@
 		<h2>The Decoder</h2>
 		<p>There are two ways a file can be compressed: lossless, and lossy. Compressing a file in a lossless manner means that when the file is reconstructed we end up exactly with what we started with. Lossy compression ideally removes information we have no use for. Because we can only hear between a certain range of frequencies, depending on the number of decibels, we can remove samples that fall outside of the hearable range. It is also possible for a frequency to "mask" another frequency causing the second frequency to become inaudible.</p>
 
-		<p>MP3 and AAC encoders combine both principles, so that we can store more music, and stream those files at a faster rate. Once the file is about to be played the decoder is responsible for undoing the encoder's compression.</p>
+		<p>MP3 and AAC encoders combine both principles so that we can store more music and stream those files at a faster rate. The decoder is responsible for undoing the encoder's compression when the file is about to be played.</p>
 
 		<p>The decoder is responsible for:</p>
 		<ul>
@@ -46,13 +46,13 @@
 		</div>
 
 		<h2>MP3 Header</h2>
-		<p>The MP3 header identifies parameters such as the sampling rate, bit rate, number of channels, and version. With this data we can determine the size of the MP3 frame, which will also tell us where the next header is.</p>
+		<p>The MP3 headers contain parameters such as the sampling rate, bit rate, number of channels, and version. With this data we can determine the size of the MP3 frame, which will also tell us where the next header is.</p>
 
 		<div class="math-env">
 			<math xmlns="http://www.w3.org/1998/Math/MathML"> <mstyle displaystyle="true"> <mfrac> <mrow> <mn> samples_per_frame </mn> </mrow> <mrow> <mn> 8 </mn> </mrow> </mfrac> <mo> &#x00B7; </mo> <mfrac> <mrow> <mi> bit_rate </mi> </mrow> <mrow> <mi> sampeling_rate </mi> </mrow> </mfrac> <mo> + </mo> <mi> padding </mi> </mstyle> </math>
 		</div>
 
-		<p>Knowing the size of the first frame, we can find the second header. Within the first frame there usually is a INFO or XING tag that can aid in navigating the file.</p>
+		<p>We can find the second header knowing the size of the first frame. Within the first frame there usually is an INFO or XING tag that can aid in navigating the file.</p>
 
 		<h2>Side Information</h2>
 		<p>Each header is followed by side information and contains the data needed to find where the "main data" is located. The main data is not located after the side information due to the varying sizes of the Huffman encoded samples. The side information also includes additional values that will be used in the requantization formula to reconstruct the samples into real numbers.</p>

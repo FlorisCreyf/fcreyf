@@ -19,12 +19,14 @@
 				<div>
 					<div id="about-text">
 						<div id="about-mail"><a id="reachme"></a><noscript>first_name + "." + last_name + "@" + domain</noscript></div>
-						<div id="about-links">
-						  <a href="https://github.com/FlorisCreyf"><img alt="Floris Creyf" src="{{ url_for('static', filename='images/github.png') }}"></a>
-						  <a href="https://www.linkedin.com/in/floriscreyf"><img alt="Floris Creyf" src="{{ url_for('static', filename='images/linkedin.png') }}"></a>
-						</div>
+						<a href="https://github.com/FlorisCreyf"><div class="about-link">
+								<img alt="Floris Creyf" src="{{ url_for('static', filename='images/github.png') }}"><span>GitHub Profile</span>
+						</div></a>
+						<a href="https://www.linkedin.com/in/floriscreyf"><div class="about-link">
+							<img alt="Floris Creyf" src="{{ url_for('static', filename='images/linkedin.png') }}"><span>LinkedIn Profile</span>
+						</div></a>
 
-						<p>The purpose of this website is to contain a collection of projects I have been working on. For my main side project I am working on a tree generator, which might involve the following:</p>
+						<p>The purpose of this website is to contain a collection of projects I have been working on. For my main side project I am working on a plant generator, which might involve the following topics:</p>
 						<ul>
 							<li>Qt5</li>
 							<li>OpenGL</li>
@@ -33,7 +35,7 @@
 							<li>Botany</li>
 						</ul>
 					</div>
-					<div><img alt="Floris Creyf" src="{{ url_for('static', filename='images/floriscreyf.jpg') }}"></div>
+					<div><img id="portrait" alt="Floris Creyf" src="{{ url_for('static', filename='images/floriscreyf.jpg') }}"></div>
 				</div>
 
 				<script>

@@ -27,7 +27,33 @@ body {
 	width: 100%;
 } #logo {
 	height: 30px;
-	margin-top: 10px;
+	margin: 10px 10px 0 0;
+	vertical-align: top;
+} nav ul {
+	margin: auto;
+	padding: 0;
+	display: inline-block;
+} nav li {
+	display: inline-block;
+	vertical-align: middle;
+} nav .nav-link {
+	font-family: "Open Sans", sans-serif;
+	padding: 19px 20px;
+	font-size: 12px;
+	color: #fff;
+	line-height: 1em;
+	font-weight: bold;
+	display: block;
+}
+
+#banner {
+	position: relative;
+	margin: 20px 0 0 0;
+	background: #383b3d;
+	height: 300px;
+} #banner img {
+	height: 100%;
+	margin-left: 20px;
 }
 
 /* index */
@@ -49,10 +75,6 @@ body {
 	font-family: "Open Sans", sans-serif;
 	padding: 10px 10px;
 	display: block;
-} .links > li:first-child a {
-	color: #fff;
-	background-color: #333;
-	border: 1px solid #333;
 }
 
 /* article */
@@ -179,7 +201,7 @@ body {
 	padding: 0;
 } #about li {
 	margin-left: 20px;
-} #about img {
+} #portrait {
 	margin: 10px 0 0 0;
 	max-width: 100%;
 } #about > div {
@@ -187,16 +209,18 @@ body {
 	justify-content: space-between;
 } #about-text {
 	padding: 0 10px 0 0;
-} #about-links {
-	margin: 20px 0 20px 0;
+} .about-link {
+	margin: 15px 0 15px 0;
 	border: 1px solid #999;
 	padding: 10px;
 	max-width: 458px;
-} #about-links img {
+} .about-link img {
 	display: inline-block;
 	vertical-align: middle;
 	height: 18px;
-	margin: 0 20px 0 0;
+	margin: 0 10px 0 0;
+} .about-link span {
+	vertical-align: middle;
 }
 
 @media screen and (max-width:700px) {

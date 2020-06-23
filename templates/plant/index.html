@@ -4,13 +4,14 @@
 		<title>Plant Generator</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{{ url_for('static', filename='plant/main.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
 	</head>
   <body>
 		{% include "plant/header.html" %}
 		<div id="overview">
 			<div class="center">
-				<h1>Plant <br> Generator</h1>
-				<p>The purpose of Plant Generator is to generate geometry. It should be able to automatically find optimal configurations for points, triangles, and UV coordinates.</p>
+				<h1>Plant Generator</h1>
+				<p>The purpose of Plant Generator is to generate geometry. It should be able to automatically find optimal configurations for points, triangles, and texture coordinates.</p>
 			</div>
 		</div>
 		<div class="center">
@@ -95,7 +96,7 @@
 			<div class="center">
 				<h2>Screenshots</h2>
 				<div id="images">
-					<img src="{{ url_for('static', filename='plant/pg1.png') }}"><img src="{{ url_for('static', filename='plant/pg2.png') }}">
+					<img src="{{ url_for('static', filename='plant/pg1.png') }}"><img src="{{ url_for('static', filename='plant/pg.png') }}">
 				</div>
 			</div>
 		</div>

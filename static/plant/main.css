@@ -8,7 +8,7 @@ body {
 /* navigataion */
 .center {
 	margin: auto;
-	max-width: 1000px;
+	max-width: 1100px;
 	padding: 0 10px;
 } #nav {
 	background-color: #333;
@@ -27,16 +27,14 @@ body {
 } .nav-link {
 	padding: 19px 20px;
 	display: block;
+	font-family: "Open Sans", sans-serif;
 	color: #fff;
 	line-height: 1em;
 	font-size: 12px;
 	font-weight: bold;
 	text-decoration: none;
-} .nav-link:hover {
 } #nav img {
 	height: 30px;
-} #nav li:first-child {
-	margin-right: 20px;
 }
 
 #overview {
@@ -47,9 +45,11 @@ body {
 	font-size: 100px;
 	color: #333
 } #overview p {
-	color: #333;
+	font-family: "Open Sans", sans-serif;
+	color: #444;
 	line-height: 1.5em;
 	max-width: 500px;
+	font-size: 14px;
 }
 
 h2 {
@@ -100,10 +100,13 @@ h2 {
 	text-decoration: none;
 	display: block;
 } #docs {
+	color: #333;
 } #docs p {
 	max-width: 500px;
 	line-height: 1.5em;
 	margin: 0 0 10px 0;
+	font-size: 13px;
+	color: #444;
 } #docs li {
 	line-height: 1.5em;
 } #docs img {
