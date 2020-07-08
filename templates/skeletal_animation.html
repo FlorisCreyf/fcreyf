@@ -1,0 +1,116 @@
+{% extends "article.html" %}
+{% block content %}
+
+<div id="article-info">
+	<span id="article-author" itemprop="author">Floris Creyf</span>
+	<span class="bold"> Posted on </span>
+	<span class="article-meta" itemprop="datePublished">7 July 2020</span>
+</div>
+
+<div id="article" itemscope itemtype="http://schema.org/Article">
+	<h1 itemprop="headline">Skeletal Animation using only Quaternions</h1>
+	<div itemprop="article-body">
+		<span id="intro">Animating objects by computing all the transformations on the CPU and reuploading the entire buffer to the GPU is inefficient. The workload is reduced by associating joints with vertices. Through this approach, only a list of transformations needs to be reuploaded and the CPU has to only interpolate between those transformations.</span>
+		<h2>Vertex Format</h2>
+		<p>Each vertex is influenced by a predefined number of transformations. Transformations for each vertex are indicated by an array of joint indices. The array of weights indicates how these transformations should be mixed.</p>
+		<table>
+			<tr><th>Name</th><th>Bytes</th></tr>
+			<tr><td>Position</td><td>3 ⋅ 4 = 12</td></tr>
+			<tr><td>Normal</td><td>3 ⋅ 4 = 12</td></tr>
+			<tr><td>Texture (UV) coordinates</td><td>2 ⋅ 4 = 8</td></tr>
+			<tr><td>Joint weights</td><td>Arbitrary constant</td></tr>
+			<tr><td>Joint indices</td><td>Arbitrary constant</td></tr>
+		</table>
+		<p>The hardest part of skeletal animation is determining what vertices should be influenced by what joints and by what amount. In <a href="/plant-generator">Plant Generator</a>, all joints are located along stem paths and weights are determined by the vertex positions along those paths.</p>
+		<h2>Relative Joint Transformations</h2>
+		<p>Joint transformations are relative to the transformations of previous joints. For example, transforming the root joint will cause all descendant joints to be transformed. It is therefore important to only store relative transformations when generating animations. Absolute transformations are computed from the relative transformations during the event loop. To represent a joint rotation: </p>
+		<ul>
+			<li>Store the duration of the transformation.</li>
+			<li>Store a relative quaternion rotation.</li>
+			<li>Store a vector that contains the difference of the joint's location and the joint's parent location<div class="math-env">relativeTranslation = joint.location - parentJoint.location</div></li>
+		</ul>
+		<div class="link">Implementation: <a href="https://github.com/FlorisCreyf/plant-generator/blob/master/plant_generator/wind.cpp">https://github.com/FlorisCreyf/plant-generator/blob/master/plant_generator/wind.cpp</a></div>
+		<h2>Global Joint Transformations</h2>
+		<p>Relative transformations are interpolated during the event loop and are composed with ancestor transformations to create global transformations.</p>
+		<ul>
+			<li>Use the relative translations to find absolute translations that will move joints to the world origin.
+<pre class="code">
+joint.translation = joint.relativeTranslation + parentJoint.translation;
+</pre></li>
+			<li>Rotate joints around the word origin. The rotation for a joint is derived by interpolating between the relative rotations of two key-frames and composing that rotation with the interpolated rotations of ancestor joints.
+<pre class="code">
+Quat r = nlerp(frame1.rotation, frame2.rotation, t);
+joint.rotation = r * parentJoint.rotation;</pre></li>
+			<li>Translate joints to their final locations by rotating the relative translation vectors using the rotations from the previous step.
+<pre class="code">
+Quat q = toQuat(joint.relativeTranslation);
+q = parentJoint.rotation * q * conjugate(parentJoint.rotation);
+joint.finalTranslation = toVec4(q) + parentJoint.finalTranslation;</pre></li>
+		</ul>
+		<div class="link">Implementation: <a href="https://github.com/FlorisCreyf/plant-generator/blob/master/plant_generator/animation.cpp">https://github.com/FlorisCreyf/plant-generator/blob/master/plant_generator/animation.cpp</a></div>
+		<h2>Vertex Shader and Blending</h2>
+		<p>In OpenGL, joint transformations can be stored either in a fixed length uniform array or a variable-length array in a Shader Storage Buffer Object (SSBO). If it is possible to determine an upper joint limit, a Uniform Buffer Object (UBO) makes it possible to upload all transformations in one API call and share that information with other shaders. The example below uses a variable-length array in a SSBO. Due to alignment constraints, the total memory usage per joint is 12 floats instead of 10 floats.</p>
+<pre class="code">
+struct Joint {
+	vec4 rotation;
+	vec4 translation1;
+	vec4 translation2;
+};
+layout(std430, binding = 3) buffer Joints {
+	Joint joints[];
+};
+</pre>
+		<p>The rotation quaternion is uploaded as a vector instead of quaternion because GLSL has no quaternion data type. It does not take a lot of time to define quaternion multiplication and conjugate functions.</p>
+<pre class="code">
+vec4 multQuat(vec4 a, vec4 b)
+{
+	vec3 m = a.xyz;
+	vec3 n = b.xyz;
+	float s = a.w * b.w - dot(m, n);
+	vec3 f = (cross(m, n) + b.w * m) + a.w * n;
+	return vec4(f, s);
+}
+
+vec4 conjugateQuat(vec4 q)
+{
+	return vec4(-q.x, -q.y, -q.z, q.w);
+}
+</pre>
+		<p>The final step is to transform the vertices and blend the transformations. The following example assumes that there is a maximum of two joints per vertex.</p>
+
+<pre class="code">
+vec4 getAnimatedPoint(vec4 point)
+{
+	Joint joint;
+	vec4 v1 = point;
+	vec4 v2 = point;
+
+	joint = joints[int(indices.x)];
+	v1 -= joint.translation1;
+	v1 = multQuat(joint.rotation, v1);
+	v1 = multQuat(v1, conjugateQuat(joint.rotation));
+	v1 += joint.translation2;
+
+	joint = joints[int(indices.y)];
+	v2 -= joint.translation1;
+	v2 = multQuat(joint.rotation, v2);
+	v2 = multQuat(v2, conjugateQuat(joint.rotation));
+	v2 += joint.translation2;
+
+	return weights.x*v1 + weights.y*v2;
+}
+</pre>
+		<div class="link">SSBO: <a href="https://github.com/FlorisCreyf/plant-generator/blob/master/editor/graphics/storage_buffer.cpp">https://github.com/FlorisCreyf/plant-generator/blob/master/editor/graphics/storage_buffer.cpp</a><br>
+		Vertex shader: <a href="https://github.com/FlorisCreyf/plant-generator/blob/master/shaders/model.vert">https://github.com/FlorisCreyf/plant-generator/blob/master/shaders/model.vert</a></div>
+		<h2>Exporting Animations with COLLADA</h2>
+		<p>COLLADA is an XML format that can be used to export animations.</p>
+		<ul>
+			<li>&lt;libary_visual_scenes&gt; defines the joint hierarchy.</li>
+			<li>&lt;library_controllers&gt; defines weights, indices, joint names, and inverse bind matrices (relative translations).</li>
+			<li>&lt;library_animations&gt; defines time values and joint transformations (compositions of relative rotations and translations).</li>
+		</ul>
+
+	</div>
+</div>
+
+{% endblock %}

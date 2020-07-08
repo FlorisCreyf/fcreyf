@@ -46,16 +46,6 @@ body {
 	display: block;
 }
 
-#banner {
-	position: relative;
-	margin: 20px 0 0 0;
-	background: #383b3d;
-	height: 300px;
-} #banner img {
-	height: 100%;
-	margin-left: 20px;
-}
-
 /* index */
 .links {
 	margin: 20px 0;
@@ -177,6 +167,9 @@ body {
 	margin: 20px 0;
 	border: 1px solid #aaa;
 	overflow: auto;
+} .link {
+	padding: 10px;
+	border: 1px solid #aaa;
 }
 
 /* about */

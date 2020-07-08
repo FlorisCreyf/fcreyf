@@ -1,5 +1,5 @@
 body {
-	margin: 0;
+	margin: 0 0 20px 0;
 	font-family: sans-serif;
 	font-size: 13px;
 	color: #222;
@@ -130,9 +130,7 @@ h2 {
 	font-weight: bold;
 }
 
-#screenshots {
-	padding-bottom: 40px;
-} #screenshots img {
+#screenshots img {
 	width: 49%;
 	display: inline-block;
 } #images img:first-child {
