@@ -36,7 +36,7 @@ def create_about_page():
 @app.route("/plant-generator")
 @verify_domain
 def plant_generator():
-    return render_template("plant/index.html")
+    return render_template("plant.html")
 
 @app.errorhandler(404)
 def create_404_page(error):

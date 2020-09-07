@@ -216,7 +216,73 @@ body {
 	vertical-align: middle;
 }
 
+/* Plant Generator */
+#plant-overview {
+	padding: 10px 0 0 0;
+	background: #fff;
+} #plant-overview h1 {
+	margin: 0;
+	font-size: 80px;
+	color: #333;
+	font-family: sans-serif;
+} #plant-overview p {
+	font-family: "Open Sans", sans-serif;
+	color: #444;
+	line-height: 1.5em;
+	max-width: 500px;
+	font-size: 14px;
+} #plant-links h2 {
+	margin: 0;
+	padding: 15px 0;
+	font-size: 18px;
+	color: #333;
+} #plant-heading h1, #plant-heading img {
+	display: inline;
+} #download-items {
+	margin: 0;
+	padding: 0;
+} #download-items li {
+	background: #3a78e8;
+	display: inline-block;
+	width: 32%;
+	margin-right: 2%;
+} #download-items li:last-child {
+	margin-right: 0;
+} #download-items a {
+	padding: 10px;
+	font-weight: bold;
+	color: #fff;
+	text-decoration: none;
+	display: block;
+} #clone {
+	width: 100%;
+	margin-top: 10px;
+	background-color: #a0cfff;
+} #clone div  {
+	padding: 10px;
+} #document {
+	width: 100%;
+	margin-top: 10px;
+	background: #3a66e8;
+} #document a {
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+	color: #fff;
+	padding: 10px
+} #screenshots img {
+	width: 49%;
+	display: inline-block;
+} #images img:first-child {
+	margin-right: 2%;
+}
+
 @media screen and (max-width:700px) {
+	#plant-overview h1 {
+		margin: 10px 0;
+		font-size: 40px;
+	}
+
 	#about > div {
 		flex-direction: column;
 	} #about-text {

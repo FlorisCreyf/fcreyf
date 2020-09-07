@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Plant Generator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		{% include "header.html" %}
+		<div id="plant-overview">
+			<div class="center">
+				<div id="plant-heading">
+					<img src="{{ url_for('static', filename='plant/icon.svg') }}">
+					<h1>Plant Generator</h1>
+				</div>
+				<p>The purpose of Plant Generator is to generate geometry. It should be able to automatically find optimal configurations for points, triangles, and texture coordinates.</p>
+			</div>
+		</div>
+		<div class="center" id="plant-links">
+			<h2 id="download">Download</h2>
+			<ul id="download-items">
+				<li><a href="{{ url_for('static', filename='plant/plant-generator-x64.tar.xz') }}">Linux (x64)</a></li><!--
+				--><li><a href="{{ url_for('static', filename='plant/plant-generator-win-x64.zip') }}">Windows (x64)</a></li><!--
+				--><li><a href="https://github.com/floriscreyf/plant-generator">Repository</a></li>
+			</ul>
+			<div id="document"><a href="{{ url_for('static', filename='plant/documentation.pdf') }}">Documentation</a></div>
+			<div id="clone"><div>git clone https://github.com/floriscreyf/plant-generator.git --recursive</div></div>
+		</div>
+		<div id="screenshots" class="center">
+			<h2>Screenshots</h2>
+			<div id="images">
+				<img src="{{ url_for('static', filename='plant/pg1.png') }}"><img src="{{ url_for('static', filename='plant/pg.png') }}">
+			</div>
+		</div>
+	</body>
+</html>
