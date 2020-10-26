@@ -20,11 +20,9 @@ def create_index_page():
 @app.route("/article/<title>")
 @verify_domain
 def create_article_page(title):
-    title = title.replace("_", "")
-    title = title.replace("-", "_")
     filename = title + ".html"
     try:
-        return render_template(filename, name=title.replace("_", " "))
+        return render_template(filename, name=title.replace("-", " "))
     except:
         return abort(404)
 
@@ -32,11 +30,6 @@ def create_article_page(title):
 @verify_domain
 def create_about_page():
     return render_template("about.html")
-
-@app.route("/plant-generator")
-@verify_domain
-def plant_generator():
-    return render_template("plant.html")
 
 @app.errorhandler(404)
 def create_404_page(error):

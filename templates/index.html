@@ -12,11 +12,14 @@
 	<body>
 		{% include 'header.html' %}
 		<div class="center">
-			<ul class="links">
-				<li><a href="plant-generator">Plant Generator</a></li><!--
-				--><li><a href="article/mp3-decoding-in-c++">MP3 Decoder</a></li><!--
-				--><li><a href="article/skeletal-animation">Skeletal Animation</a></li>
-			</ul>
+			<h1>Index</h1>
+			<h2>Articles</h2>
+			<ul class="links"><li><a href="article/mp3-decoding-in-c++">MP3 Decoder</a></li><li><a href="article/skeletal-animation">Skeletal Animation</a></li></ul>
+			<h2>Plant Generator</h2>
+			<p id="plant-overview">The purpose of Plant Generator is to generate geometry. It should be able to automatically determine the right topology, texture coordinates, and joints for animation.</p>
+			<ul class="links"><li><a href="{{ url_for('static', filename='plant/documentation.pdf') }}">Design Document</a></li><li><a href="https://github.com/floriscreyf/plant-generator">Repository</a></li></ul>
+			<div id="clone"><div>git clone https://github.com/floriscreyf/plant-generator.git --recursive</div></div>
+			<div id="images"><img src="{{ url_for('static', filename='plant/pg1.png') }}"><img src="{{ url_for('static', filename='plant/pg.png') }}"></div>
 		</div>
 	</body>
 </html>
